@@ -8,4 +8,6 @@ public interface DriverLicenseService {
 
     void createDriveLicenseInfo(DriveLicenseInfoDTO driveLicenseInfoDTO);
     List<DriveLicenseInfoDTO> searchByName(String firstName, String lastName);
+
+    DriveLicenseInfoDTO getLicenseNumber(String driverLicenseNumber);
 }

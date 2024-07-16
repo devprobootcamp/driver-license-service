@@ -26,4 +26,9 @@ public class DriverLicenseController {
     public ResponseEntity<List<DriveLicenseInfoDTO>> createLicense(@RequestParam(value = "fn", required = false) String firstName, @RequestParam(value = "ln", required = false) String lastName) {
         return ResponseEntity.ok(driverLicenseService.searchByName(firstName, lastName));
     }
+
+    @GetMapping("/number")
+    public ResponseEntity<DriveLicenseInfoDTO> getLicenseInfo(@RequestParam("lcn") String licenseNumber) {
+        return ResponseEntity.ok(driverLicenseService.getLicenseNumber(licenseNumber));
+    }
 }

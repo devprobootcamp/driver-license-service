@@ -29,6 +29,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(createErrorMessage(ex.getFieldError().getDefaultMessage(), request.getServletPath()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
+        return new ResponseEntity<>(createErrorMessage(ex.getMessage(), request.getServletPath()), HttpStatus.NOT_FOUND);
+    }
+
     private ErrorMessage createErrorMessage(String error, String path) {
         ErrorMessage errorMessage = new ErrorMessage();
         errorMessage.setError(error);
